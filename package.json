@@ -29,9 +29,9 @@
         "workbox-strategies": "^7.0.0"
     },
     "devDependencies": {
-        "@parcel/config-default": "^2.12.0",
-        "@parcel/packager-raw-url": "2.12.0",
-        "@parcel/transformer-svg-react": "^2.12.0",
+        "@parcel/config-default": "^2.15.4",
+        "@parcel/packager-raw-url": "^2.15.4",
+        "@parcel/transformer-svg-react": "^2.15.4",
         "@parcel/transformer-webmanifest": "^2.15.4"
     }
 }
