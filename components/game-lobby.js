@@ -23,6 +23,7 @@ export default ({isEasterEggFound}) => {
     const isVisibilityApplied = useStorage("visibility", false)
     const trenchDensityPercent = useStorage("trench-density", 0)
     const isDoubleBase = useStorage("double-base", false)
+    const isWithRandomBases = useStorage("random-bases", false)
     const isAgainstBot = useStorage("bot", false)
 
     return awaiting ? (
@@ -35,6 +36,7 @@ export default ({isEasterEggFound}) => {
                 is_against_bot: isAgainstBot[0],
                 trench_density_percent: trenchDensityPercent[0],
                 is_double_base: isDoubleBase[0],
+                is_with_random_bases: isWithRandomBases[0],
                 code: gameCode,
             }}
             iconIndex={iconIndex[0]}
@@ -73,6 +75,11 @@ export default ({isEasterEggFound}) => {
                 state={isDoubleBase}
                 values={[false, true]}
                 labeler={value => (value ? "Double base" : "Single base")}
+            />
+            <ToggleSection
+                state={isWithRandomBases}
+                values={[false, true]}
+                labeler={value => (value ? "Random bases" : "Corner bases")}
             />
             <RatingSection state={turnCount} icon={<TurnIcon />} max={7} />
             <RatingSection
