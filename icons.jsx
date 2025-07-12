@@ -23,15 +23,12 @@ import Golf from "@mui/icons-material/GolfCourseOutlined"
 import Star from "@mui/icons-material/GradeOutlined"
 import HealthAndSafety from "@mui/icons-material/HealthAndSafetyOutlined"
 import Hive from "@mui/icons-material/HiveOutlined"
-import Fire from "@mui/icons-material/LocalFireDepartmentOutlined"
 import Cart from "@mui/icons-material/LocalGroceryStoreOutlined"
 import LunchDining from "@mui/icons-material/LunchDiningOutlined"
 import ComingSoon from "@mui/icons-material/MinimizeOutlined"
 import Movie from "@mui/icons-material/MovieOutlined"
 import Music from "@mui/icons-material/MusicNoteOutlined"
-import Moon from "@mui/icons-material/NightsStayOutlined"
 import Bell from "@mui/icons-material/NotificationsNoneOutlined"
-import PushPin from "@mui/icons-material/PushPinOutlined"
 import Rocket from "@mui/icons-material/RocketLaunchOutlined"
 import Science from "@mui/icons-material/ScienceOutlined"
 import Soup from "@mui/icons-material/SoupKitchenOutlined"
@@ -42,11 +39,23 @@ import Token from "@mui/icons-material/TokenOutlined"
 import Traffic from "@mui/icons-material/TrafficOutlined"
 import Check from "@mui/icons-material/VerifiedOutlined"
 import SvgIcon from "@mui/material/SvgIcon"
-import Hat from "./images/hat.svg"
-import Pawn from "./images/pawn.svg"
-import Pumpkin from "./images/pumpkin.svg"
-import Snowglobe from "./images/snowglobe.svg"
-import Zeppelin from "./images/zeppelin.svg"
+import Hat from "./images/hat.svg?react"
+import Pawn from "./images/pawn.svg?react"
+import Pumpkin from "./images/pumpkin.svg?react"
+import Snowglobe from "./images/snowglobe.svg?react"
+import Zeppelin from "./images/zeppelin.svg?react"
+import Egg from "@mui/icons-material/EggOutlined"
+import BrokenEgg from "@mui/icons-material/EggAltOutlined"
+import PropaneTank from "@mui/icons-material/PropaneTankOutlined"
+import Fire from "@mui/icons-material/LocalFireDepartmentOutlined"
+import Battery0 from "@mui/icons-material/Battery0BarOutlined"
+import Battery1 from "@mui/icons-material/Battery1BarOutlined"
+import Battery2 from "@mui/icons-material/Battery2BarOutlined"
+import Battery3 from "@mui/icons-material/Battery3BarOutlined"
+import Battery4 from "@mui/icons-material/Battery4BarOutlined"
+import Battery5 from "@mui/icons-material/Battery5BarOutlined"
+import Battery6 from "@mui/icons-material/Battery6BarOutlined"
+import BatteryFull from "@mui/icons-material/BatteryFullOutlined"
 
 export const icons = [
     <Cross />,
@@ -63,7 +72,16 @@ export const icons = [
     <Star />,
     <Hive />,
     <Cart />,
-    <Moon />,
+    [
+        <Battery3 />,
+        <Battery4 />,
+        <Battery5 />,
+        <Battery6 />,
+        <BatteryFull />,
+        <Battery1 />,
+        <Battery2 />,
+        <Battery0 />,
+    ],
     <Football />,
     <Anchor />,
     <Celebration />,
@@ -77,9 +95,9 @@ export const icons = [
     <Science />,
     <LunchDining />,
     <HealthAndSafety />,
-    <Traffic />,
+    [<Egg />, <BrokenEgg />],
     <Balance />,
-    <Cup />,
+    [<PropaneTank />, <Fire />],
     <Bolt />,
     <Check />,
     <SvgIcon inheritViewBox component={Hat} />,
@@ -92,9 +110,9 @@ export const icons = [
     <SvgIcon inheritViewBox component={Zeppelin} />,
     <SvgIcon inheritViewBox component={Pumpkin} />,
     <SvgIcon inheritViewBox component={Snowglobe} />,
-    <Fire />,
+    <Cup />,
     <FireTruck />,
-    <PushPin />,
+    <Traffic />,
     <Golf />,
     <ComingSoon />,
     <ComingSoon />,

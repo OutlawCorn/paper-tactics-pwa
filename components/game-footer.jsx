@@ -3,7 +3,6 @@ import {BadgeAlert} from "./badge-alert"
 import RobotIcon from "@mui/icons-material/SmartToyOutlined"
 import OpponentIcon from "@mui/icons-material/ConnectWithoutContact"
 import IdIcon from "@mui/icons-material/Fingerprint"
-import {match, T} from "babel-plugin-proposal-pattern-matching/match"
 
 export const GameFooter = ({game, gamePreferences}) => {
     const isBot = gamePreferences.is_against_bot
@@ -15,14 +14,18 @@ export const GameFooter = ({game, gamePreferences}) => {
     )
     const os = game.opponent.viewData.os
 
-    const opponent = match({region, city, os, isBot})(
-        ({isBot = true}) => botName,
-        ({region = T.string, city = T.string, os = T.nullish}) =>
-            `Someone in the ${city} (${region}) time zone`,
-        ({region = T.string, city = T.string}) =>
-            `Someone on ${os} in the ${city} (${region}) time zone`,
-        _ => "Someone in the world"
-    )
+    let opponent = botName
+    if (!isBot) {
+        if (region && city) {
+            if (!os) {
+                opponent = `Someone in the ${city} (${region}) time zone`
+            } else {
+                opponent = `Someone on ${os} in the ${city} (${region}) time zone`
+            }
+        } else {
+            opponent = `Someone in the world`
+        }
+    }
 
     return (
         <>
