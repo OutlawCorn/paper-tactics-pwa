@@ -1,7 +1,8 @@
+import {Opacity} from "@mui/icons-material"
 import Box from "@mui/material/Box"
 
 export const GameUnitIcon = ({children, sx}) => {
-    const svgSx = {
+    const childrenSx = {
         "& svg": {
             width: "100%",
             height: "100%",
@@ -13,7 +14,7 @@ export const GameUnitIcon = ({children, sx}) => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={{...svgSx, ...sx}}
+            sx={{...childrenSx, ...sx}}
         >
             {children}
         </Box>

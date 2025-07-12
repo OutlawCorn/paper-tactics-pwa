@@ -6,7 +6,11 @@ export const ToggleSection = ({state, values, labeler, callback}) => {
     const [value, setValue] = state
 
     const toggleButtons = values.map(value => (
-        <ToggleButton key={value} value={value} sx={{flexGrow: 1, p: 0}}>
+        <ToggleButton
+            key={value}
+            value={value}
+            sx={{flexGrow: 1, p: 0, textTransform: "none"}}
+        >
             {labeler(value)}
         </ToggleButton>
     ))

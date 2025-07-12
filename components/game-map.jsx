@@ -37,7 +37,19 @@ export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
 
     const renderedRows = cellProps.map((row, y) => {
         const renderedRow = row.map((props, x) => {
-            return <GameMapCell {...props} icons={icons} key={x} />
+            return (
+                <GameMapCell
+                    turnCount={
+                        game.me.units.length +
+                        game.me.walls.length +
+                        game.opponent.walls.length -
+                        1
+                    }
+                    {...props}
+                    icons={icons}
+                    key={x}
+                />
+            )
         })
 
         return <TableRow key={y}>{renderedRow}</TableRow>

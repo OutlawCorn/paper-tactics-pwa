@@ -7,7 +7,6 @@ import Button from "@mui/material/Button"
 import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
 import DialogTitle from "@mui/material/DialogTitle"
-import match from "babel-plugin-proposal-pattern-matching/match"
 import {useState} from "react"
 import {BadgeAlert} from "./badge-alert"
 import {Section} from "./section"
@@ -24,57 +23,52 @@ export const GameHeader = ({
     concede,
 }) => {
     const [isConcedeDialogOpen, setIsConcedeDialogOpen] = useState(false)
-    const [color, message] = match({
-        opponentWon,
-        opponentWonByConceding,
-        opponentLost,
-        opponentGone,
-        myTurn,
-    })(
-        ({opponentWon = true}) => ["secondary", "You are defeated!"],
-        ({opponentWonByConceding = true}) => [
-            "secondary",
-            "You have conceded!",
-        ],
-        ({opponentLost = true}) => ["primary", "Your opponent is defeated!"],
-        ({opponentGone = true}) => ["primary", "Your opponent has conceded!"],
-        ({myTurn = true}) => ["primary", "Your turn"],
-        _ => ["secondary", "Your opponent's turn"]
-    )
+    let color, message, IconComponent
+
+    if (opponentWon) {
+        color = "secondary"
+        message = "You are defeated"
+        IconComponent = LostIcon
+    } else if (opponentWonByConceding) {
+        color = "secondary"
+        message = "You have conceded"
+        IconComponent = LostIcon
+    } else if (opponentLost) {
+        color = "primary"
+        message = "Your opponent is defeated!"
+        IconComponent = WonIcon
+    } else if (opponentGone) {
+        color = "primary"
+        message = "Your opponent has conceded!"
+        IconComponent = WonIcon
+    } else if (myTurn) {
+        color = "primary"
+        message = "Your turn"
+        IconComponent = MyTurnIcon
+    } else {
+        color = "secondary"
+        message = "Your opponent's turn"
+        IconComponent = OpponentsTurnIcon
+    }
 
     const iconProps = {color, sx: {transform: "scale(-1, 1)"}}
+    const icon = <IconComponent {...iconProps} />
 
-    const icon = match({
-        opponentWon,
-        opponentWonByConceding,
-        opponentLost,
-        opponentGone,
-        myTurn,
-    })(
-        ({opponentWon = true}) => <LostIcon {...iconProps} />,
-        ({opponentWonByConceding = true}) => <LostIcon {...iconProps} />,
-        ({opponentLost = true}) => <WonIcon {...iconProps} />,
-        ({opponentGone = true}) => <WonIcon {...iconProps} />,
-        ({myTurn = true}) => <MyTurnIcon {...iconProps} />,
-        _ => <OpponentsTurnIcon {...iconProps} />
-    )
+    let decoratedIcon, progress, topButton
 
-    const [decoratedIcon, progress, topButton] = match({
-        opponentWon,
-        opponentWonByConceding,
-        opponentLost,
-        opponentGone,
-    })(
-        ({
-            opponentWon = false,
-            opponentWonByConceding = false,
-            opponentGone = false,
-            opponentLost = false,
-        }) => [
+    if (
+        !opponentWon &&
+        !opponentGone &&
+        !opponentWonByConceding &&
+        !opponentLost
+    ) {
+        decoratedIcon = (
             <Badge badgeContent={turnsLeft} color={color}>
                 {icon}
-            </Badge>,
-            (turnsLeft * 100) / gamePreferences.turn_count,
+            </Badge>
+        )
+        progress = (turnsLeft * 100) / gamePreferences.turn_count
+        topButton = (
             <>
                 <Button
                     color="secondary"
@@ -102,16 +96,17 @@ export const GameHeader = ({
                         </Button>
                     </DialogActions>
                 </Dialog>
-            </>,
-        ],
-        _ => [
-            icon,
-            100,
+            </>
+        )
+    } else {
+        decoratedIcon = icon
+        progress = 100
+        topButton = (
             <Button variant="contained" disableElevation onClick={onQuit}>
                 New game
-            </Button>,
-        ]
-    )
+            </Button>
+        )
+    }
 
     return (
         <>

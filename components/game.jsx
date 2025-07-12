@@ -2,7 +2,6 @@ import NoInternetIcon from "@mui/icons-material/CloudOffOutlined"
 import PeopleIcon from "@mui/icons-material/ConnectWithoutContact"
 import RobotIcon from "@mui/icons-material/SmartToyOutlined"
 import Button from "@mui/material/Button"
-import match from "babel-plugin-proposal-pattern-matching/match"
 import Bowser from "bowser"
 import camelcaseKeys from "camelcase-keys"
 import {useEffect, useMemo, useState} from "react"
@@ -89,14 +88,12 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
 
         const gameIcons = {
             me: icons[iconIndex],
-            opponent: match({
-                opponentIndex: opponentIconIndex,
-                iconIndex,
-            })(
-                ({opponentIndex = 0, iconIndex = 0}) => icons[1],
-                ({opponentIndex = iconIndex}) => icons[0],
-                ({opponentIndex}) => icons[opponentIndex]
-            ),
+            opponent:
+                opponentIconIndex == 0 && iconIndex == 0
+                    ? icons[1]
+                    : opponentIconIndex == iconIndex
+                      ? icons[0]
+                      : icons[opponentIconIndex],
         }
 
         return (
@@ -134,8 +131,8 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
     const message = isWebSocketDead
         ? "Cannot connect to the server"
         : isAgainstBot
-        ? "Powering on the bot…"
-        : "Waiting for someone else to connect…"
+          ? "Powering on the bot…"
+          : "Waiting for someone else to connect…"
 
     return (
         <>
