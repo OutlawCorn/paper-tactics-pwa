@@ -27,7 +27,7 @@ export const GameHeader = ({
 
     if (opponentWon) {
         color = "secondary"
-        message = "You are defeated!"
+        message = "You are defeated"
         IconComponent = LostIcon
     } else if (opponentWonByConceding) {
         color = "secondary"
@@ -39,7 +39,7 @@ export const GameHeader = ({
         IconComponent = WonIcon
     } else if (opponentGone) {
         color = "primary"
-        message = "Your opponent has conceded"
+        message = "Your opponent has conceded!"
         IconComponent = WonIcon
     } else if (myTurn) {
         color = "primary"
@@ -47,7 +47,7 @@ export const GameHeader = ({
         IconComponent = MyTurnIcon
     } else {
         color = "secondary"
-        message = "Your opponent's turns"
+        message = "Your opponent's turn"
         IconComponent = OpponentsTurnIcon
     }
 
