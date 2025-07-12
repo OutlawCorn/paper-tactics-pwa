@@ -1,4 +1,4 @@
 .PHONY: dist
 
 dist:
-	pnpm exec vite build index.html
+	pnpm exec vite build
