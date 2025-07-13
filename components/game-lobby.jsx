@@ -13,7 +13,7 @@ import {RatingSection} from "./rating-section"
 import {Section} from "./section"
 import {ToggleSection} from "./toggle-section"
 
-export default ({isEasterEggFound}) => {
+export default ({isEasterEggFound, highlightFX, animateFX}) => {
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useStorage("url", servers[0].url)
     const [gameCode, setGameCode] = useStorage("game-code", "")
@@ -28,6 +28,7 @@ export default ({isEasterEggFound}) => {
 
     return awaiting ? (
         <Game
+            animateFX={animateFX[0]}
             apiUrl={apiUrl}
             gamePreferences={{
                 size: gameSize[0],
@@ -89,6 +90,7 @@ export default ({isEasterEggFound}) => {
                 max={12}
             />
             <IconToggleSection
+                highlightFX={highlightFX[0]}
                 iconIndexState={iconIndex}
                 isEasterEggFound={isEasterEggFound}
             />

@@ -3,7 +3,13 @@ import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableRow from "@mui/material/TableRow"
 
-export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
+export const GameMap = ({
+    game,
+    gamePreferences,
+    onTurnMade,
+    icons,
+    animateFX,
+}) => {
     const cellProps = Array(gamePreferences.size)
         .fill()
         .map(() => {
@@ -39,6 +45,7 @@ export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
         const renderedRow = row.map((props, x) => {
             return (
                 <GameMapCell
+                    animateFX={animateFX}
                     turnCount={
                         game.me.units.length +
                         game.me.walls.length +

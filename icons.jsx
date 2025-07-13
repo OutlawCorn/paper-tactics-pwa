@@ -2,7 +2,6 @@ import Anchor from "@mui/icons-material/AnchorOutlined"
 import Stars from "@mui/icons-material/AutoAwesomeOutlined"
 import Bakery from "@mui/icons-material/BakeryDiningOutlined"
 import Balance from "@mui/icons-material/BalanceOutlined"
-import Beach from "@mui/icons-material/BeachAccessOutlined"
 import Blender from "@mui/icons-material/BlenderOutlined"
 import Bolt from "@mui/icons-material/BoltOutlined"
 import Breakfast from "@mui/icons-material/BreakfastDiningOutlined"
@@ -15,17 +14,17 @@ import ColorLens from "@mui/icons-material/ColorLensOutlined"
 import Diamond from "@mui/icons-material/DiamondOutlined"
 import Cup from "@mui/icons-material/EmojiEventsOutlined"
 import Bulb from "@mui/icons-material/EmojiObjectsOutlined"
-import Heart from "@mui/icons-material/FavoriteBorderOutlined"
 import Circle from "@mui/icons-material/FiberManualRecordOutlined"
-import FireTruck from "@mui/icons-material/FireTruckOutlined"
+import Ramen from "@mui/icons-material/RamenDiningOutlined"
+import Speed from "@mui/icons-material/SpeedOutlined"
 import Flag from "@mui/icons-material/FlagOutlined"
 import Golf from "@mui/icons-material/GolfCourseOutlined"
 import Star from "@mui/icons-material/GradeOutlined"
 import HealthAndSafety from "@mui/icons-material/HealthAndSafetyOutlined"
 import Hive from "@mui/icons-material/HiveOutlined"
+import Moon from "@mui/icons-material/NightsStayOutlined"
 import Cart from "@mui/icons-material/LocalGroceryStoreOutlined"
 import LunchDining from "@mui/icons-material/LunchDiningOutlined"
-import ComingSoon from "@mui/icons-material/MinimizeOutlined"
 import Movie from "@mui/icons-material/MovieOutlined"
 import Music from "@mui/icons-material/MusicNoteOutlined"
 import Bell from "@mui/icons-material/NotificationsNoneOutlined"
@@ -33,7 +32,6 @@ import Rocket from "@mui/icons-material/RocketLaunchOutlined"
 import Science from "@mui/icons-material/ScienceOutlined"
 import Soup from "@mui/icons-material/SoupKitchenOutlined"
 import Beer from "@mui/icons-material/SportsBarOutlined"
-import Football from "@mui/icons-material/SportsFootballOutlined"
 import Hash from "@mui/icons-material/TagOutlined"
 import Token from "@mui/icons-material/TokenOutlined"
 import Traffic from "@mui/icons-material/TrafficOutlined"
@@ -56,6 +54,14 @@ import Battery4 from "@mui/icons-material/Battery4BarOutlined"
 import Battery5 from "@mui/icons-material/Battery5BarOutlined"
 import Battery6 from "@mui/icons-material/Battery6BarOutlined"
 import BatteryFull from "@mui/icons-material/BatteryFullOutlined"
+import Stonks from "@mui/icons-material/TrendingUpOutlined"
+import NotStonks from "@mui/icons-material/TrendingDownOutlined"
+import Football from "@mui/icons-material/SportsFootballOutlined"
+import Soccer from "@mui/icons-material/SportsSoccerOutlined"
+import UmbrellaOpen from "@mui/icons-material/BeachAccessOutlined"
+import UmbrellaClosed from "@mui/icons-material/UmbrellaOutlined"
+import Password from"@mui/icons-material/PasswordOutlined"
+import BadPassword from"@mui/icons-material/PinOutlined"
 
 export const icons = [
     <Cross />,
@@ -68,8 +74,8 @@ export const icons = [
     <Music />,
     <Bakery />,
     <Bulb />,
-    <Heart />,
     <Star />,
+    [<Stonks />, <NotStonks />],
     <Hive />,
     <Cart />,
     [
@@ -82,11 +88,11 @@ export const icons = [
         <Battery2 />,
         <Battery0 />,
     ],
-    <Football />,
+    [<Football />, <Soccer />],
     <Anchor />,
     <Celebration />,
     <Bell />,
-    <Beach />,
+    [<UmbrellaOpen />, <UmbrellaClosed />],
     <Diamond />,
     <Token />,
     <BubbleChart />,
@@ -110,11 +116,11 @@ export const icons = [
     <SvgIcon inheritViewBox component={Zeppelin} />,
     <SvgIcon inheritViewBox component={Pumpkin} />,
     <SvgIcon inheritViewBox component={Snowglobe} />,
-    <Cup />,
-    <FireTruck />,
+    <Moon />,
+    <Ramen />,
     <Traffic />,
     <Golf />,
-    <ComingSoon />,
-    <ComingSoon />,
-    <ComingSoon />,
+    [<Password />, <BadPassword />],
+    <Speed />,
+    <Cup />,
 ]

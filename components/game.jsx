@@ -15,7 +15,13 @@ import {GameMap} from "./game-map"
 import {Section} from "./section"
 import {ToggleSection} from "./toggle-section"
 
-export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
+export const Game = ({
+    apiUrl,
+    gamePreferences,
+    iconIndex,
+    onQuit,
+    animateFX,
+}) => {
     const [game, setGame] = useState()
     const agent = useMemo(
         () => Bowser.getParser(window.navigator.userAgent),
@@ -106,6 +112,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
                 />
                 <Section>
                     <GameMap
+                        animateFX={animateFX}
                         game={game}
                         onTurnMade={onTurnMade}
                         icons={gameIcons}

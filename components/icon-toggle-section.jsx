@@ -3,8 +3,14 @@ import {GameUnitIcon} from "./game-unit-icon"
 import {ToggleSection} from "./toggle-section"
 import {keyframes} from "@mui/styled-engine"
 import Tooltip from "@mui/material/Tooltip"
+import highlightFX from "./game-lobby"
 
-export const IconToggleSection = ({iconIndexState, isEasterEggFound}) => {
+export const IconToggleSection = ({
+    iconIndexState,
+    isEasterEggFound,
+    highlightFX,
+}) => {
+    console.log(highlightFX)
     const rows = []
     const length = isEasterEggFound ? icons.length : icons.length - 10
     for (var i = 0; i * 10 < length; ++i) {
@@ -22,12 +28,16 @@ export const IconToggleSection = ({iconIndexState, isEasterEggFound}) => {
                     let sx = {}
                     if (Array.isArray(icon)) {
                         icon = icon[0]
-                        icon = (
-                            <Tooltip title="Icon with Special Effects">
-                                {icon}
-                            </Tooltip>
-                        )
-                        sx = {animation: `${transition} 2s infinite alternate`}
+                        if (highlightFX) {
+                            icon = (
+                                <Tooltip title="FX Icon">
+                                    {icon}
+                                </Tooltip>
+                            )
+                            sx = {
+                                animation: `${transition} 2s infinite alternate`,
+                            }
+                        }
                     }
                     return <GameUnitIcon sx={sx}>{icon}</GameUnitIcon>
                 }}

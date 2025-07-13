@@ -11,6 +11,7 @@ export const GameMapCell = ({
     onClick,
     icons,
     turnCount,
+    animateFX,
 }) => {
     let colorStyle
 
@@ -81,18 +82,14 @@ export const GameMapCell = ({
     }
 
     if (Array.isArray(icon)) {
-        if (icon.length === 2) {
-            if (wall) {
-                icon = icon[1]
-            } else {
-                icon = icon[0]
-            }
-        } else {
+        if (animateFX) {
             if (wall) {
                 icon = icon[icon.length - 1]
             } else {
                 icon = icon[turnCount % (icon.length - 1)]
             }
+        } else {
+            icon = icon[0]
         }
     }
 
