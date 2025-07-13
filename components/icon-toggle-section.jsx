@@ -30,7 +30,7 @@ export const IconToggleSection = ({
                         icon = icon[0]
                         if (highlightFX) {
                             icon = (
-                                <Tooltip title="Icon with Special Effects">
+                                <Tooltip title="FX Icon">
                                     {icon}
                                 </Tooltip>
                             )
