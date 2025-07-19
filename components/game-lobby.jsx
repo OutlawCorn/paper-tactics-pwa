@@ -13,7 +13,7 @@ import {RatingSection} from "./rating-section"
 import {Section} from "./section"
 import {ToggleSection} from "./toggle-section"
 
-export default ({isEasterEggFound, highlightFX, animateFX, showTooltips}) => {
+export default ({isEasterEggFound, highlightFX, animateFX, showTooltips, isQuickPlay}) => {
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useStorage("url", servers[0].url)
     const [gameCode, setGameCode] = useStorage("game-code", "")
@@ -25,6 +25,7 @@ export default ({isEasterEggFound, highlightFX, animateFX, showTooltips}) => {
     const isDoubleBase = useStorage("double-base", false)
     const isWithRandomBases = useStorage("random-bases", false)
     const isAgainstBot = useStorage("bot", false)
+    const isReallyQuickPlay = isQuickPlay[0] && !isAgainstBot[0]
 
     return awaiting ? (
         <Game
@@ -64,12 +65,24 @@ export default ({isEasterEggFound, highlightFX, animateFX, showTooltips}) => {
                 }
             />
             <ToggleSection
+                state={isQuickPlay}
+                values={[false, true]}
+                labeler={value =>
+                    value ? "Quick play" : "Custom"
+                }
+                tooltip={
+                    showTooltips ? "Play with any settings or choose your own" : null
+                }
+                isHidden={isAgainstBot[0]}
+            />
+            <ToggleSection
                 state={isVisibilityApplied}
                 values={[false, true]}
                 labeler={value => (value ? "With visibility rules" : "Classic")}
                 tooltip={
                     showTooltips ? "Conceal cells that are not reachable" : null
                 }
+                isHidden={isReallyQuickPlay}
             />
             <ToggleSection
                 state={trenchDensityPercent}
@@ -80,6 +93,7 @@ export default ({isEasterEggFound, highlightFX, animateFX, showTooltips}) => {
                         ? "Generate neutral units that can be captured by any player"
                         : null
                 }
+                isHidden={isReallyQuickPlay}
             />
             <ToggleSection
                 state={isDoubleBase}
@@ -90,6 +104,7 @@ export default ({isEasterEggFound, highlightFX, animateFX, showTooltips}) => {
                         ? "Generate two bases per player instead of one"
                         : null
                 }
+                isHidden={isReallyQuickPlay}
             />
             <ToggleSection
                 state={isWithRandomBases}
@@ -100,12 +115,14 @@ export default ({isEasterEggFound, highlightFX, animateFX, showTooltips}) => {
                         ? "Generate the bases on random edge cells"
                         : null
                 }
+                isHidden={isReallyQuickPlay}
             />
             <RatingSection
                 state={turnCount}
                 icon={<TurnIcon />}
                 max={7}
                 tooltip={showTooltips ? "Amount of moves per turn" : null}
+                isHidden={isReallyQuickPlay}
             />
             <RatingSection
                 state={gameSize}
@@ -113,6 +130,7 @@ export default ({isEasterEggFound, highlightFX, animateFX, showTooltips}) => {
                 min={3}
                 max={12}
                 tooltip={showTooltips ? "Map size" : null}
+                isHidden={isReallyQuickPlay}
             />
             <IconToggleSection
                 highlightFX={highlightFX}
