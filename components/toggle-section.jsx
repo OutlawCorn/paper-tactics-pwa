@@ -1,16 +1,23 @@
 import ToggleButton from "@mui/material/ToggleButton"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import Tooltip from "@mui/material/Tooltip"
-import { Section } from "./section"
+import {Section} from "./section"
 
-export const ToggleSection = ({ state, values, labeler, callback, tooltip, isHidden }) => {
+export const ToggleSection = ({
+    state,
+    values,
+    labeler,
+    callback,
+    tooltip,
+    isHidden,
+}) => {
     const [value, setValue] = state
 
     const toggleButtons = values.map(value => (
         <ToggleButton
             key={value}
             value={value}
-            sx={{ flexGrow: 1, p: 0, textTransform: "none" }}
+            sx={{flexGrow: 1, p: 0, textTransform: "none"}}
         >
             {labeler(value)}
         </ToggleButton>
@@ -29,7 +36,7 @@ export const ToggleSection = ({ state, values, labeler, callback, tooltip, isHid
                                 setValue(value)
                             }
                         }}
-                        sx={{ display: "flex" }}
+                        sx={{display: "flex"}}
                     >
                         {toggleButtons}
                     </ToggleButtonGroup>
@@ -37,5 +44,5 @@ export const ToggleSection = ({ state, values, labeler, callback, tooltip, isHid
             </Section>
         )
     }
-    return
+    return null
 }

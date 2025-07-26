@@ -21,7 +21,7 @@ export const Navigation = () => {
     const highlightFX = useStorage("highlight-fx", true)
     const animateFX = useStorage("animate-fx", true)
     const showTooltips = useStorage("show-tooltips", true)
-    const isQuickPlay = useStorage("is-quick-play", true)
+    const isQuickPlay = useStorage("is-quick-play", false)
     const [currentPage, setCurrentPage] = useStorage("tab", 0, localStorage)
     const [isEasterEggFound, setIsEasterEggFound] = useStorage(
         ":-)",
